@@ -2,8 +2,11 @@ package com.patterns.demo.mono;
 
 import org.apache.hc.client5.http.fluent.Request;
 import org.apache.hc.client5.http.fluent.Response;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.HttpResponse;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
+import org.apache.hc.core5.http.message.BasicClassicHttpResponse;
 import org.junit.jupiter.api.Test;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -54,11 +57,11 @@ public class MonoUserTests {
         assertThat(responseTime).isLessThan(1000);
 
         // Bad practice: Status code validation mixed with other checks
-        HttpResponse httpResponse = response.returnResponse();
+        BasicClassicHttpResponse httpResponse = (BasicClassicHttpResponse) response.returnResponse();
         assertThat(httpResponse.getCode()).isEqualTo(201);
 
         // Bad practice: Manual JSON parsing without proper error handling
-        String responseBody = response.returnContent().asString();
+        String responseBody = EntityUtils.toString(httpResponse.getEntity());
         JsonNode jsonResponse = new ObjectMapper().readTree(responseBody);
         
         // Bad practice: Multiple assertions without proper description
