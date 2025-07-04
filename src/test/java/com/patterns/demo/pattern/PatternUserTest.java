@@ -43,7 +43,7 @@ public class PatternUserTest {
         assertThat(result.hasStatusCode(201)).isTrue();
         assertThat(result.getRawBody()).isNotEmpty();
 
-        //assertThat(result.canBeDeserialized(UserRequest.class)).isTrue();
+        assertThat(result.canBeDeserialized(UserRequest.class)).isTrue();
         // Verify response contains user data
         UserRequest createdUser = result.as(UserRequest.class);
         assertThat(createdUser.getName()).isEqualTo(validUser.getName());

@@ -14,7 +14,7 @@ import java.util.Arrays;
 /**
  * Template Pattern para las acciones REST
  */
-public abstract class AbstractRestAction implements Action {
+public abstract class AbstractRestAction{
     
     protected ActionResult executeGet(String url, TestProperties config) throws Exception {
         Response response = Request.get(url)

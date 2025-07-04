@@ -1,32 +1,39 @@
 # Patrones de diseño
 
-El objetivo de este taller es brindar herramientas para roles de QA que buscan mejorar sus habilidades de abstraccion y desarrollo de codigo.
+El objetivo de este taller es proporcionar patrones de diseño como herramientas para que los profesionales de QA mejoren sus habilidades de abstracción y desarrollo de código automatizado de pruebas.
 
 ## Requerimientos
 - Java 21
 - Maven 3.x
 
 ## Patrones
-Podemos definir patron como una serie de hechos que se repiten en el tiempo. Al repetirse en el tiempo podemos decir que es un evento predecible, por lo tanto podemos crear un modelo que nos permita predecir el comportamiento y de esta forma podemos tomar desiciones para controlar el resultado.
+Podemos definir patrón como una serie de hechos que se repiten en el tiempo. Al repetirse en el tiempo podemos decir que es un evento predecible, por lo tanto podemos crear un modelo que nos permita predecir el comportamiento y de esta forma podemos tomar decisiones para controlar el resultado.
 
 ## Patrones de diseño
 
-Al identificar un patorn (evento recurrente y predecible) 
-podemos crear un modelo que permita optimizar/mitigar el evento
-al repetir este modelo podemos decir que se convierte en un nuevo patron.
+Al identificar un patrón (evento recurrente y predecible) 
+podemos crear un modelo que permita optimizar/mitigar el evento.
+Al repetir este modelo podemos decir que se convierte en un nuevo patrón.
 
-Los patrones de diseño se definen como una solucion a un problema recurrente. 
+Los patrones de diseño son soluciones reusables y probadas para problemas comunes en el diseño de software. Proporcionan un vocabulario común y mejores prácticas que facilitan la comunicación entre desarrolladores y la mantenibilidad del código.
 
-Los patrones de diseño se especifican mediante
+Los patrones de diseño se especifican mediante:
 - Nombre
 - Contexto (Problema que resuelve/su objetivo)
-- Solucion (Como se resuelve el problema)
-- Esquema (Diagrama tipicamente clases)
+- Solución (Cómo se resuelve el problema)
+- Esquema (Diagrama típicamente clases)
 
-> Los patrones se volvieron particularmente populares tras la publicacion del libro "Design Patterns: Elements of Reusable Object-Oriented Software" por Erich Gamma, Richard Helm, Ralph Johnson y John Vlissides en 1994. Mejor conocidos como "Gang of Four" (GoF). 
-> Pese a que los patornes listados en el libro siguen vigentes y en constante uso es importante entender el contexto historico en el que fueron creados. Una epoca con pocos frameworks, iniciaba el desarrollo de aplicaciones de interfaces de usuario, los lenguajes de programacion orientados a objetos estaban en sus inicios. 
+> Los patrones se volvieron particularmente populares tras la publicación del libro "Design Patterns: Elements of Reusable Object-Oriented Software" por Erich Gamma, Richard Helm, Ralph Johnson y John Vlissides en 1994. Mejor conocidos como "Gang of Four" (GoF). 
+> Pese a que los patrones listados en el libro siguen vigentes y en constante uso es importante entender el contexto histórico en el que fueron creados. Una época con pocos frameworks, iniciaba el desarrollo de aplicaciones de interfaces de usuario, los lenguajes de programación orientados a objetos estaban en sus inicios. 
 
-Pese a que nos se han publicado nuevos patrones, los patrones de diseño listados en el libro siguen vigentes y en constante uso, hemos seleccionado los siguientes patrones para nuestro taller:
+El grupo de GoF clasifico los patrones que fue identificando en tres grandes rubros:
+
+- Creacionales: Se encargan de la creación de objetos y sus relaciones.
+- Estructurales: Se encargan de la estructura de los objetos y sus relaciones.
+- Comportamentales: Se encargan del comportamiento de los objetos y sus relaciones.
+
+
+Pese a que se han publicado nuevos patrones, los patrones de diseño listados en el libro siguen muy vigentes y en constante uso, hemos seleccionado los siguientes patrones para nuestro taller:
 
 | **#** | **Patrón / Principio**                    | **Descripción**                                                             | **Uso en pruebas de APIs**                                                                 | **Ejemplo**                                                                     |
 | ----: | ----------------------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------- |
@@ -38,10 +45,9 @@ Pese a que nos se han publicado nuevos patrones, los patrones de diseño listado
 |     6 | **Adapter Pattern**                       | Convierte una interfaz existente en otra esperada por el sistema.           | Unificar el acceso a diferentes herramientas HTTP (axios, supertest, etc.).                | Ej: `httpClient.get(...)` que por debajo usa axios o superagent según config    |
 |     7 | **Decorator Pattern**                     | Añade funcionalidades a una función sin modificar su estructura.            | Agregar logging, retries, métricas o validaciones a funciones existentes.                  | Ej: `withRetry(crearOrden)` o `withLogger(getUser)`                             |
 |     8 | **Command Pattern**                       | Encapsula acciones como objetos independientes.                             | Representar acciones como comandos reusables: `CrearUsuario`, `ActualizarOrden`, etc.      | `await new CrearUsuarioCommand(payload).ejecutar()`                             |
- | 9 | **Singleton Pattern**                       | Garantiza que una clase tenga una sola instancia y proporciona un punto de acceso global. | Manejo de configuración, logging, conexión a base de datos, etc. | `JsonMapper.getInstance()` |
+|     9 | **Singleton Pattern**                     | Garantiza que una clase tenga una sola instancia y proporciona un punto de acceso global. | Manejo de configuración, logging, conexión a base de datos, etc. | `JsonMapper.getInstance()` |
 
-
-
+Para más información sobre los patrones de diseño de GoF puedes visitar el sitio [Refactoring guru - Patrones de Diseño](https://refactoring.guru/es/design-patterns) que tiene una excelente explicación, diagramas y ejemplos. 
 
 
 
