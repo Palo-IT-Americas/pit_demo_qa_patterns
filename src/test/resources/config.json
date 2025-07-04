@@ -1,0 +1,31 @@
+{
+    "dev":{
+        "rest":{
+            "baseUrl":"https://jsonplaceholder.typicode.com",
+            "paths":{
+                "user":"/users"
+            },
+            "credentials":{
+                "user":"userdev",
+                "password":"passworddev"
+            }
+        },
+        "db":{
+            "url":"jdbc:postgresql://localhost:5432/mydb",
+            "username":"userdev",
+            "password":"passworddev"
+        }
+    },
+    "prod":{
+        "rest":{
+            "baseUrl":"https://jsonplaceholder.typicode.com",
+            "paths":{
+                "user":"/users"
+            },
+            "credentials":{
+                "user":"userprd",
+                "password":"passwordprod"
+            }
+        }
+    }
+}
